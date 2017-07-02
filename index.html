@@ -1,1 +1,383 @@
-This Website is being developed!
+		<!DOCTYPE html>
+		<html>
+
+		  <head>
+			<meta charset='utf-8' />
+			<meta http-equiv="X-UA-Compatible" content="chrome=1" />
+			<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+			<meta name="description" content="Slate is a responsive theme for GitHub Pages" />
+
+			<link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+			<link href='https://fonts.googleapis.com/css?family=Roboto:400,400italic,700italic,700' rel='stylesheet' type='text/css'>
+			<link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300italic,700,700italic' rel='stylesheet' type='text/css'>
+
+			<title>Saturn Robot's page</title>
+		  </head>
+
+		  <body>
+
+			<!-- HEADER -->
+			<div id="header_wrap" class="outer">
+				<header class="inner">
+				  <a id="forkme_banner" href="https://github.com/Saturn-robot">View on GitHub</a>
+
+				  <h1 id="project_title">Saturn Robot</h1>
+				  <h2 id="project_tagline">欢迎来到Saturn Robot的项目主页！</h2>
+				</header>
+			</div>
+			
+		  <section class="outer">
+			<div class="downloads inner">
+			  <a class="zip_download_link" href="#main_content">主页</a>
+			  <a class="tar_download_link" href="http://blog.csdn.net/github_30605157/article/category/6127120" target="_blank">博客</a>
+			  <a class="tar_download_link" href="http://www.ros.org/" target="_blank">ROS</a>
+			</div>
+		  </section>
+		  
+			<!-- MAIN CONTENT -->
+			<div id="main_content_wrap" class="outer">
+			  <section id="main_content" class="inner">
+
+				<h1>Saturn Robot</h1>
+				
+				<img alt="robot structure" src="images/logo.png" />
+				<p>Saturn Robot是一款基于ROS的视觉导航轮式机器人平台。“Saturn”译为土星、农业之神，这也是我们为什么命名为Saturn的原因：它出自西农学子之手，因此以Saturn(寓意为农业)为之命名。</p>
+
+				<h1>特性</h1>
+
+				<p>本项目的目的是设计一款低成本的机器人平台，因此具有一下几种特性：</p>
+				<ul>
+				  <li>易扩展：采用ROS(机器人操作系统)作为软件平台，通过创建具有特定功能的功能包，即可完成相关功能的集成；另外，使用Jetson TK1(上位机)、Arduino Mega2560(下位机)，可扩展多种传感器和外设。</li>
+				  <li>低成本：使用低成本高性能的Jetson TK1作为上位机；使用基于单目或双目摄像头的视觉导航，相比传统的激光雷达，成本降低很多倍。</li>
+				  <li>视觉导航：目前使用Orbbec Astra 3D摄像头作为主要的视觉传感器</li>
+				</ul>
+
+				<h1>总体架构图</h1>
+
+				<p>Saturn Robot整体架构主要有三层，硬件层、驱动层、操作系统层。这三层自底向上，互相依赖，构成了整个机器人系统。下图为Saturn Robot的结构图：</p>
+				
+				<img alt="robot structure" src="images/robot_structure.png" />
+				
+				其中，驱动层和操作系统层使用串口通信，借助ROS bridge功能包的桥接，这样就实现了操作系统层和驱动层的代码分离，从而降低了这两层的耦合性。
+
+				<h1 id="硬件参数">硬件参数</h1>
+
+		<h2 id="外形参数">外形参数</h2>
+
+		<table>
+		  <thead>
+			<tr>
+			  <th style="text-align: left">参数</th>
+			  <th style="text-align: left">值</th>
+			</tr>
+		  </thead>
+		  <tbody>
+			<tr>
+			  <td style="text-align: left">轮胎直径(Wheel Diameter)</td>
+			  <td style="text-align: left">65mm</td>
+			</tr>
+			<tr>
+			  <td style="text-align: left">尺寸(Size)</td>
+			  <td style="text-align: left">198.07x186mm</td>
+			</tr>
+			<tr>
+			  <td style="text-align: left">两轮间距(Wheel Separation)</td>
+			  <td style="text-align: left">193mm</td>
+			</tr>
+			<tr>
+			  <td style="text-align: left">底盘大小(Chassis)</td>
+			  <td style="text-align: left">144x119x3.66</td>
+			</tr>
+		  </tbody>
+		</table>
+
+		<h3 id="电动机参数">电动机参数</h3>
+
+		<table>
+		  <thead>
+			<tr>
+			  <th style="text-align: left">参数</th>
+			  <th style="text-align: left">值</th>
+			</tr>
+		  </thead>
+		  <tbody>
+			<tr>
+			  <td style="text-align: left">工作电压</td>
+			  <td style="text-align: left">7～13V</td>
+			</tr>
+			<tr>
+			  <td style="text-align: left">额定功率</td>
+			  <td style="text-align: left">7W</td>
+			</tr>
+			<tr>
+			  <td style="text-align: left">电机类型</td>
+			  <td style="text-align: left">永磁有刷</td>
+			</tr>
+			<tr>
+			  <td style="text-align: left">堵转电流</td>
+			  <td style="text-align: left">5.4A</td>
+			</tr>
+			<tr>
+			  <td style="text-align: left">堵转扭矩</td>
+			  <td style="text-align: left">15kgf.cm</td>
+			</tr>
+			<tr>
+			  <td style="text-align: left">额定电流</td>
+			  <td style="text-align: left">540mA</td>
+			</tr>
+			<tr>
+			  <td style="text-align: left">额定扭矩</td>
+			  <td style="text-align: left">1.5kgf.cm</td>
+			</tr>
+			<tr>
+			  <td style="text-align: left">原始转速</td>
+			  <td style="text-align: left">15000rpm</td>
+			</tr>
+			<tr>
+			  <td style="text-align: left">空载转速</td>
+			  <td style="text-align: left">500rpm</td>
+			</tr>
+			<tr>
+			  <td style="text-align: left">减速比</td>
+			  <td style="text-align: left">1:30</td>
+			</tr>
+			<tr>
+			  <td style="text-align: left">输出轴直径</td>
+			  <td style="text-align: left">6mm</td>
+			</tr>
+			<tr>
+			  <td style="text-align: left">输出轴类型</td>
+			  <td style="text-align: left">D型偏心轴</td>
+			</tr>
+		  </tbody>
+		</table>
+
+		<p><strong>NOTE：</strong>以上数据在12V环境下测量的到。</p>
+
+		<h3 id="编码器参数">编码器参数</h3>
+
+		<table>
+		  <thead>
+			<tr>
+			  <th style="text-align: left">参数</th>
+			  <th style="text-align: left">值</th>
+			</tr>
+		  </thead>
+		  <tbody>
+			<tr>
+			  <td style="text-align: left">型号</td>
+			  <td style="text-align: left">AB相增量式霍尔（磁）编码器</td>
+			</tr>
+			<tr>
+			  <td style="text-align: left">线数</td>
+			  <td style="text-align: left">390（以减速器输出轴测量）</td>
+			</tr>
+			<tr>
+			  <td style="text-align: left">供电电压</td>
+			  <td style="text-align: left">5.0V</td>
+			</tr>
+			<tr>
+			  <td style="text-align: left">特色功能</td>
+			  <td style="text-align: left">自带上拉整形，单片机可以直接读取</td>
+			</tr>
+		  </tbody>
+		</table>
+
+		<p><strong>NOTE:</strong>详细内容请访问:<a href="https://github.com/Saturn-robot/Encoder_driver">https://github.com/Saturn-robot/Encoder_driver</a></p>
+
+		<h3 id="imu参数">IMU参数</h3>
+
+		<table>
+		  <thead>
+			<tr>
+			  <th style="text-align: left">参数</th>
+			  <th style="text-align: left">值</th>
+			</tr>
+		  </thead>
+		  <tbody>
+			<tr>
+			  <td style="text-align: left">型号</td>
+			  <td style="text-align: left">GY-85</td>
+			</tr>
+			<tr>
+			  <td style="text-align: left">加速度计分辨率</td>
+			  <td style="text-align: left">13位</td>
+			</tr>
+			<tr>
+			  <td style="text-align: left">陀螺仪敏感范围因子</td>
+			  <td style="text-align: left">14.375 LSB pro °/s</td>
+			</tr>
+			<tr>
+			  <td style="text-align: left">电子罗盘数字分辨率</td>
+			  <td style="text-align: left">0.92</td>
+			</tr>
+		  </tbody>
+		</table>
+
+		<p><strong>NOTE:</strong>详细内容请访问:<a href="https://github.com/Saturn-robot/GY85_driver">https://github.com/Saturn-robot/GY85_driver</a></p>
+
+		<h2 id="引脚分配">引脚分配</h2>
+
+		<h3 id="l298n电动机驱动板">L298N电动机驱动板</h3>
+
+		<table>
+		  <thead>
+			<tr>
+			  <th style="text-align: left">L298N</th>
+			  <th style="text-align: left">Arduino</th>
+			</tr>
+		  </thead>
+		  <tbody>
+			<tr>
+			  <td style="text-align: left">ENA</td>
+			  <td style="text-align: left">D5</td>
+			</tr>
+			<tr>
+			  <td style="text-align: left">IN1</td>
+			  <td style="text-align: left">D7</td>
+			</tr>
+			<tr>
+			  <td style="text-align: left">IN2</td>
+			  <td style="text-align: left">D8</td>
+			</tr>
+			<tr>
+			  <td style="text-align: left">ENB</td>
+			  <td style="text-align: left">D6</td>
+			</tr>
+			<tr>
+			  <td style="text-align: left">IN3</td>
+			  <td style="text-align: left">D9</td>
+			</tr>
+			<tr>
+			  <td style="text-align: left">IN4</td>
+			  <td style="text-align: left">D10</td>
+			</tr>
+		  </tbody>
+		</table>
+
+		<h3 id="ab相编码器">AB相编码器</h3>
+
+		<table>
+		  <thead>
+			<tr>
+			  <th style="text-align: left">Encoders</th>
+			  <th style="text-align: left">Arduino</th>
+			</tr>
+		  </thead>
+		  <tbody>
+			<tr>
+			  <td style="text-align: left">左A相</td>
+			  <td style="text-align: left">D2</td>
+			</tr>
+			<tr>
+			  <td style="text-align: left">左B相</td>
+			  <td style="text-align: left">D22</td>
+			</tr>
+			<tr>
+			  <td style="text-align: left">右A相</td>
+			  <td style="text-align: left">D3</td>
+			</tr>
+			<tr>
+			  <td style="text-align: left">右B相</td>
+			  <td style="text-align: left">D24</td>
+			</tr>
+			<tr>
+			  <td style="text-align: left">左+5V</td>
+			  <td style="text-align: left">+5V</td>
+			</tr>
+			<tr>
+			  <td style="text-align: left">左GND</td>
+			  <td style="text-align: left">GND</td>
+			</tr>
+			<tr>
+			  <td style="text-align: left">右+5V</td>
+			  <td style="text-align: left">+5V</td>
+			</tr>
+			<tr>
+			  <td style="text-align: left">右GND</td>
+			  <td style="text-align: left">GND</td>
+			</tr>
+		  </tbody>
+		</table>
+
+		<h3 id="gy85惯性测量模组">GY85惯性测量模组</h3>
+
+		<table>
+		  <thead>
+			<tr>
+			  <th style="text-align: left">GY85</th>
+			  <th style="text-align: left">Arduino</th>
+			</tr>
+		  </thead>
+		  <tbody>
+			<tr>
+			  <td style="text-align: left">VCC</td>
+			  <td style="text-align: left">+5V</td>
+			</tr>
+			<tr>
+			  <td style="text-align: left">GND</td>
+			  <td style="text-align: left">GND</td>
+			</tr>
+			<tr>
+			  <td style="text-align: left">SDA</td>
+			  <td style="text-align: left">D20</td>
+			</tr>
+			<tr>
+			  <td style="text-align: left">SCL</td>
+			  <td style="text-align: left">D21</td>
+			</tr>
+		  </tbody>
+		</table>
+
+		<h3 id="超声波传感器">超声波传感器</h3>
+
+		<table>
+		  <thead>
+			<tr>
+			  <th style="text-align: left">GY85</th>
+			  <th style="text-align: left">Arduino</th>
+			</tr>
+		  </thead>
+		  <tbody>
+			<tr>
+			  <td style="text-align: left">VCC</td>
+			  <td style="text-align: left">+5V</td>
+			</tr>
+			<tr>
+			  <td style="text-align: left">GND</td>
+			  <td style="text-align: left">GND</td>
+			</tr>
+			<tr>
+			  <td style="text-align: left">TrigPin</td>
+			  <td style="text-align: left">D25</td>
+			</tr>
+			<tr>
+			  <td style="text-align: left">EchoPin</td>
+			  <td style="text-align: left">D26</td>
+			</tr>
+		  </tbody>
+		</table>
+		<h1>硬件驱动</h1>
+
+				<ul>
+				  <li><a href="https://saturn-robot.github.io/L298N_driver/" target=_blank>电动机驱动</a></li>
+				  <li><a href="https://saturn-robot.github.io/Encoder_driver/" target=_blank>编码器驱动</a></li>
+				  <li><a href="https://saturn-robot.github.io/GY85_driver/" target=_blank>IMU驱动</a></li>
+				  <li><a href="https://saturn-robot.github.io/ultrasonic_driver/" target=_blank>超声波传感器驱动</a></li>
+				  <li><a href="https://3dclub.orbbec3d.com/t/universal-download-thread-for-astra-series-cameras/622" target=_blank>3D摄像头驱动</a></li>
+				</ul>
+
+			  </section>
+			</div>
+
+			<!-- FOOTER  -->
+			<div id="footer_wrap" class="outer">
+			  <footer class="inner">
+				<p class="copyright">Slate theme maintained by <a href="https://github.com/jasoncostello">Jason Costello</a></p>
+				<p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+			  </footer>
+			</div>
+
+		  </body>
+		</html>
