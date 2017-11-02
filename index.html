@@ -367,7 +367,49 @@
 				  <li><a href="https://saturn-robot.github.io/ultrasonic_driver/" target=_blank>超声波传感器驱动</a></li>
 				  <li><a href="https://3dclub.orbbec3d.com/t/universal-download-thread-for-astra-series-cameras/622" target=_blank>3D摄像头驱动</a></li>
 				</ul>
+<h1 id="">地图构建</h1>
 
+<p>首先运行在主机上打开终端，然后使用ssh登录机器人：</p>
+
+<pre><code>ssh ubuntu@tegra-ubuntu.local
+</code></pre>
+
+<p>然后，运行最小功能包集：</p>
+
+<pre><code>roslaunch saturnbot_bringup minimal.launch
+</code></pre>
+
+<p>接着，启动地图构建功能包集：</p>
+
+<pre><code>roslaunch saturnbot_navigation gmapping_demo.launch
+</code></pre>
+
+<p>然后，运行3D可视化软件查看地图构建过程：</p>
+
+<pre><code>roslaunch saturnbot_navigation view_map_building.launch
+</code></pre>
+
+<h1 id="-1">自主导航</h1>
+
+<p>首先运行在主机上打开终端，然后使用ssh登录机器人：</p>
+
+<pre><code>ssh ubuntu@tegra-ubuntu.local
+</code></pre>
+
+<p>然后，运行最小功能包集：</p>
+
+<pre><code>roslaunch saturnbot_bringup minimal.launch
+</code></pre>
+
+<p>接着，运行自主导航功能包集：</p>
+
+<pre><code>roslaunch saturnbot_navigation amcl_demo.launch
+</code></pre>
+
+<p>最后，运行3D可视化软件查看自主导航过程，并指定2D导航目标：</p>
+
+<pre><code>roslaunch saturnbot_navigation view_map_navigation.launch
+</code></pre>
 			  </section>
 			</div>
 
